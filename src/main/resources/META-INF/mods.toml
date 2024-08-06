@@ -1,10 +1,9 @@
 modLoader="javafml" #mandatoryion
 loaderVersion="[47,)" #mandatory
 license="All rights reserved"
-version="1.1.1"
 [[mods]] #mandatory
 modId="airdrop_supply" #mandatory
-version="${file.jarVersion}" #mandatory
+version="1.1.1"
 displayName="ReAirdrop Supply" #mandatory
 logoFile="icon.png"
 authors="无梦之心, KL_jiana" #optional
