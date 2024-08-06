@@ -1,4 +1,4 @@
-# Airdrop Supply 空投
+# ReAirdrop Supply 空投
 这是一个空投模组。
 该模组需要配合数据包才能发挥全部效果，是为整合包作者提供的模组。
 

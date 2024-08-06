@@ -1,4 +1,4 @@
-# Airdrop Supply
+# ReAirdrop Supply
 This is an airdrop mod.  
 This mod needs to be used with a data pack to fully function and is designed for mod pack creators.
 
