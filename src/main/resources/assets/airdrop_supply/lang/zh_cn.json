@@ -1,0 +1,16 @@
+{
+  "container.airdrop_supply.airdrop_supply": "空投补给箱",
+  "notification.airdrop_supply.airdrop_arrive": "%4$s 的空投补给箱已到达 [%1$s]-[%2$s]-[%3$s] 。",
+  "notification.airdrop_supply.airdrop_crash": "%1$s 的空投补给箱已坠毁。",
+  "notification.airdrop_supply.airdrop_invalidate": "%4$s 的位于 [%1$s]-[%2$s]-[p%3$s] 的空投补给箱已超时失效。",
+  "notification.airdrop_supply.airdrop_summoned": "%1$s's 呼叫了空投补给箱。请耐心等待。",
+  "notification.airdrop_supply.airdrop_summoned_invalid_dimension": "%1$s 尝试在无法进行空投的维度呼叫补给箱。",
+  "notification.airdrop_supply.airdrop_location_set": "%3$s 将补给箱空投位置固定在了 [%1$s]-[%2$s]。",
+  "notification.airdrop_supply.airdrop_location_set_invalid_dimension": "%1$s 尝试在无法投递空投的维度设定固定空投位置。",
+  "notification.airdrop_supply.airdrop_location_unset": "%1$s 取消了固定空投位置。",
+  "notification.airdrop_supply.airdrop_location_unset_invalid_dimension": "无法在该维度取消固定空投位置。",
+  "item.airdrop_supply.airdrop_pager": "空投补给箱呼叫器",
+  "item.airdrop_supply.airdrop_location_fixer": "空投位置固定装置",
+  "item.airdrop_supply.airdrop_location_canceller": "空投位置取消装置",
+  "block.airdrop_supply.airdrop_supply": "空投补给箱"
+}

@@ -1,0 +1,16 @@
+{
+  "container.airdrop_supply.airdrop_supply": "Airdrop Supply Crate",
+  "notification.airdrop_supply.airdrop_arrive": "%4$s's airdrop supply crate has arrived at [%1$s]-[%2$s]-[%3$s].",
+  "notification.airdrop_supply.airdrop_crash": "%1$s's airdrop supply crate has crashed.",
+  "notification.airdrop_supply.airdrop_invalidate": "%4$s's airdrop supply crate at [%1$s]-[%2$s]-[%3$s] disappeared.",
+  "notification.airdrop_supply.airdrop_summoned": "%1$s has called an airdrop supply crate. Please be patient.",
+  "notification.airdrop_supply.airdrop_summoned_invalid_dimension": "%1$s tries to summon an airdrop supply crate in invalid dimension.",
+  "notification.airdrop_supply.airdrop_location_set": "%3$s has fixed airdrop location at [%1$s]-[%2$s].",
+  "notification.airdrop_supply.airdrop_location_set_invalid_dimension": "%1$s tries to set airdrop location in invalid dimension.",
+  "notification.airdrop_supply.airdrop_location_unset": "%1$s has canceled fixed airdrop location.",
+  "notification.airdrop_supply.airdrop_location_unset_invalid_dimension": "Cannot cancel fixed airdrop location in this dimension.",
+  "item.airdrop_supply.airdrop_pager": "Airdrop Pager",
+  "item.airdrop_supply.airdrop_location_fixer": "Airdrop Location Fixer",
+  "item.airdrop_supply.airdrop_location_canceller": "Airdrop Location Canceller",
+  "block.airdrop_supply.airdrop_supply": "Airdrop Supply Crate"
+}

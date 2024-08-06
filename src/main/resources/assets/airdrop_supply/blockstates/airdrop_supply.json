@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "type=normal,facing=north,level=basic": {
+      "model": "airdrop_supply:block/case/normal/basic"
+    },
+    "type=normal,facing=east,level=basic": {
+      "model": "airdrop_supply:block/case/normal/basic",
+      "y": 90
+    },
+    "type=normal,facing=south,level=basic": {
+      "model": "airdrop_supply:block/case/normal/basic",
+      "y": 180
+    },
+    "type=normal,facing=west,level=basic": {
+      "model": "airdrop_supply:block/case/normal/basic",
+      "y": 270
+    },
+    "type=normal,facing=north,level=medium": {
+      "model": "airdrop_supply:block/case/normal/medium"
+    },
+    "type=normal,facing=east,level=medium": {
+      "model": "airdrop_supply:block/case/normal/medium",
+      "y": 90
+    },
+    "type=normal,facing=south,level=medium": {
+      "model": "airdrop_supply:block/case/normal/medium",
+      "y": 180
+    },
+    "type=normal,facing=west,level=medium": {
+      "model": "airdrop_supply:block/case/normal/medium",
+      "y": 270
+    },
+    "type=normal,facing=north,level=advanced": {
+      "model": "airdrop_supply:block/case/normal/advanced"
+    },
+    "type=normal,facing=east,level=advanced": {
+      "model": "airdrop_supply:block/case/normal/advanced",
+      "y": 90
+    },
+    "type=normal,facing=south,level=advanced": {
+      "model": "airdrop_supply:block/case/normal/advanced",
+      "y": 180
+    },
+    "type=normal,facing=west,level=advanced": {
+      "model": "airdrop_supply:block/case/normal/advanced",
+      "y": 270
+    },
+    "type=medic,facing=north,level=basic": {
+      "model": "airdrop_supply:block/case/medic/basic"
+    },
+    "type=medic,facing=east,level=basic": {
+      "model": "airdrop_supply:block/case/medic/basic",
+      "y": 90
+    },
+    "type=medic,facing=south,level=basic": {
+      "model": "airdrop_supply:block/case/medic/basic",
+      "y": 180
+    },
+    "type=medic,facing=west,level=basic": {
+      "model": "airdrop_supply:block/case/medic/basic",
+      "y": 270
+    },
+    "type=medic,facing=north,level=medium": {
+      "model": "airdrop_supply:block/case/medic/medium"
+    },
+    "type=medic,facing=east,level=medium": {
+      "model": "airdrop_supply:block/case/medic/medium",
+      "y": 90
+    },
+    "type=medic,facing=south,level=medium": {
+      "model": "airdrop_supply:block/case/medic/medium",
+      "y": 180
+    },
+    "type=medic,facing=west,level=medium": {
+      "model": "airdrop_supply:block/case/medic/medium",
+      "y": 270
+    },
+    "type=medic,facing=north,level=advanced": {
+      "model": "airdrop_supply:block/case/medic/advanced"
+    },
+    "type=medic,facing=east,level=advanced": {
+      "model": "airdrop_supply:block/case/medic/advanced",
+      "y": 90
+    },
+    "type=medic,facing=south,level=advanced": {
+      "model": "airdrop_supply:block/case/medic/advanced",
+      "y": 180
+    },
+    "type=medic,facing=west,level=advanced": {
+      "model": "airdrop_supply:block/case/medic/advanced",
+      "y": 270
+    }
+  }
+}
