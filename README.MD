@@ -1,4 +1,5 @@
 # Airdrop Supply 空投
+这是一个空投模组。
 该模组需要配合数据包才能发挥全部效果，是为整合包作者提供的模组。
 
 ### 配置文件
@@ -105,7 +106,8 @@
   "item.airdrop_supply.airdrop_pager": "空投补给箱呼叫器",
   "item.airdrop_supply.airdrop_location_fixer": "空投位置固定装置",
   "item.airdrop_supply.airdrop_location_canceller": "空投位置取消装置",
-  "block.airdrop_supply.airdrop_supply": "空投补给箱"
+  "block.airdrop_supply.airdrop_supply": "空投补给箱",
+  "creativetab.airdrop_supply.airdrop_supply": "空投供应"
 }
 ```
 * airdrop_arrive 补给箱投放成功通知。四个参数分别为补给箱 x, y, z 坐标和玩家名称。
@@ -119,7 +121,7 @@
 * airdrop_location_unset_invalid_dimension 空投位置取消失败通知。这是由于在非主世界进行操作造成的。无参数。
 
 ### 空投召唤指令
-格式;/airdrop x y z 空投等级 空投类型
+格式:/airdrop x y z 空投等级 空投类型
 > 只在主世界有效
 
 # 更新 1.0.2
