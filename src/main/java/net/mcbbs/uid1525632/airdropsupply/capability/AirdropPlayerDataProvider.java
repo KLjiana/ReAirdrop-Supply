@@ -82,7 +82,7 @@ public class AirdropPlayerDataProvider implements ICapabilitySerializable<Compou
     public static void migrateCapabilityWhenPlayerRespawn(PlayerEvent.Clone event) {
         event.getOriginal().reviveCaps();
         LazyOptional<AirdropPlayerData> oldData = event.getOriginal().getCapability(AirdropPlayerData.CAPABILITY);
-        LazyOptional<AirdropPlayerData> newData = event.getPlayer().getCapability(AirdropPlayerData.CAPABILITY);
+        LazyOptional<AirdropPlayerData> newData = event.getOriginal().getCapability(AirdropPlayerData.CAPABILITY);
         newData.ifPresent((newCap) -> oldData.ifPresent((oldCap) -> {
             newCap.nextAirdropCountdown = oldCap.nextAirdropCountdown;
             newCap.airdropDespawnInfo.addAll(oldCap.airdropDespawnInfo);

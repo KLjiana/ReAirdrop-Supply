@@ -7,13 +7,12 @@ import net.mcbbs.uid1525632.airdropsupply.capability.AirdropPlayerData;
 import net.mcbbs.uid1525632.airdropsupply.entry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 
 import java.lang.ref.WeakReference;
@@ -36,7 +35,7 @@ public class AirdropMission {
         }
         var data = player.getCapability(AirdropPlayerData.CAPABILITY);
         data.ifPresent(cap->{
-            var overworld = player.level.getServer().overworld();
+            var overworld = player.level().getServer().overworld();
             // Summon airdrop
             if(calculatePos==null){
                 BlockPos dropPos = cap.fixDropLocation;
@@ -46,8 +45,8 @@ public class AirdropMission {
                         respawnPos = overworld.getSharedSpawnPos();
                     }
                     var ang = player.getRandom().nextDouble() * 360;
-                    var x = respawnPos.getX() + Math.cos(ang) * Configuration.AIRDROP_SPREAD_RANGE.get();
-                    var z = respawnPos.getZ() + Math.sin(ang) * Configuration.AIRDROP_SPREAD_RANGE.get();
+                    int x = (int) (respawnPos.getX() + Math.cos(ang) * Configuration.AIRDROP_SPREAD_RANGE.get());
+                    int z = (int)  (respawnPos.getZ() + Math.sin(ang) * Configuration.AIRDROP_SPREAD_RANGE.get());
                     dropPos = new BlockPos(x, overworld.getMaxBuildHeight() - 1, z);
                 }
                 calculatePos = dropPos;
@@ -59,9 +58,7 @@ public class AirdropMission {
                     || (belowState.isAir() || belowState.is(BlockTags.LEAVES) || onState.is(BlockTags.SNOW))){
                 if(step>5) return;
                 if(calculatePos.getY()<=overworld.getMinBuildHeight() + 1){
-                    player.sendMessage(
-                            new TranslatableComponent("notification.airdrop_supply.airdrop_crash",player.getScoreboardName()),
-                            player.getUUID());
+                    player.sendSystemMessage(Component.translatable("notification.airdrop_supply.airdrop_crash",player.getScoreboardName()));
                     done = true;
                     return;
                 }
@@ -79,11 +76,9 @@ public class AirdropMission {
                     type = AirdropSupplyBlock.Type.MEDIC;
                 }
                 if(type==null) {
-                    player.sendMessage(
-                            new TranslatableComponent("notification.airdrop_supply.airdrop_crash",player.getScoreboardName()),
-                            player.getUUID());
+                    player.sendSystemMessage(Component.translatable("notification.airdrop_supply.airdrop_crash",player.getScoreboardName()));
                 } else {
-                    int day = (int) (player.level.getDayTime() / 24000) + 1;
+                    int day = (int) (player.level().getDayTime() / 24000) + 1;
                     int nw = Configuration.BASIC_BASE_WEIGHT.get() + day *  Configuration.BASIC_MULTIPLE_WEIGHT.get();
                     int mw = Configuration.MEDIUM_BASE_WEIGHT.get() + day *  Configuration.MEDIUM_MULTIPLE_WEIGHT.get();
                     int aw = Configuration.ADVANCED_BASE_WEIGHT.get() + day *  Configuration.ADVANCED_MULTIPLE_WEIGHT.get();
@@ -118,9 +113,7 @@ public class AirdropMission {
                 .setValue(HorizontalDirectionalBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(player.getRandom())));
         RandomizableContainerBlockEntity.setLootTable(overworld, player.getRandom(), dropPos, AirdropSupply.LootTables.calculateLootTable(type,caseLevel));
         AirdropSupplyBlock.setDespawnTime(overworld,dropPos);
-        player.sendMessage(
-                new TranslatableComponent("notification.airdrop_supply.airdrop_arrive",dropPos.getX(),dropPos.getY(),dropPos.getZ(),player.getScoreboardName()),
-                player.getUUID());
+        player.sendSystemMessage(Component.translatable("notification.airdrop_supply.airdrop_arrive",dropPos.getX(),dropPos.getY(),dropPos.getZ(),player.getScoreboardName()));
         data.airdropDespawnInfo.add(Pair.of(overworld.getGameTime()+Configuration.AIRDROP_DESPAWN_TIME.get(),dropPos));
     }
 }

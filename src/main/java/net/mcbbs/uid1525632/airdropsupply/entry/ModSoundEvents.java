@@ -13,6 +13,6 @@ public class ModSoundEvents {
     public static final RegistryObject<SoundEvent> OPEN_AIRDROP = register("open_airdrop");
 
     private static RegistryObject<SoundEvent> register(String name) {
-        return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(AirdropSupply.MOD_ID, name)));
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(AirdropSupply.MOD_ID, name)));
     }
 }

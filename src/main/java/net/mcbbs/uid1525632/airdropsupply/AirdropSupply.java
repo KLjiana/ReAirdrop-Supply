@@ -5,6 +5,7 @@ import net.mcbbs.uid1525632.airdropsupply.capability.AirdropPlayerData;
 import net.mcbbs.uid1525632.airdropsupply.capability.AirdropPlayerDataProvider;
 import net.mcbbs.uid1525632.airdropsupply.command.CallingAirdropCommand;
 import net.mcbbs.uid1525632.airdropsupply.entry.*;
+import net.mcbbs.uid1525632.airdropsupply.item.MobTabs;
 import net.mcbbs.uid1525632.airdropsupply.misc.AirdropManager;
 import net.mcbbs.uid1525632.airdropsupply.misc.Configuration;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +34,7 @@ public class AirdropSupply
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Configuration.COMMON_CONFIG);
-
+        MobTabs.TABS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);

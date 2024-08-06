@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockEntities {
 
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, AirdropSupply.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, AirdropSupply.MOD_ID);
     public static final RegistryObject<BlockEntityType<AirdropSupplyBlockEntity>> AIRDROP_SUPPLY = BLOCK_ENTITIES.register("airdrop_supply", () ->
             BlockEntityType.Builder.of(AirdropSupplyBlockEntity::new, ModBlocks.AIRDROP_SUPPLY.get()).build(null));
 

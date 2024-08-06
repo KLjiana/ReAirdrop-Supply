@@ -14,7 +14,10 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -22,7 +25,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -37,7 +39,7 @@ public class AirdropSupplyBlock extends HorizontalDirectionalBlock implements En
     public static final EnumProperty<Type> TYPE = EnumProperty.create("type",Type.class);
     public static final EnumProperty<CaseLevel> LEVEL = EnumProperty.create("level",CaseLevel.class);
     public AirdropSupplyBlock() {
-        super(BlockBehaviour.Properties.of(Material.METAL).strength(20F).sound(SoundType.METAL).explosionResistance(20).noOcclusion());
+        super(BlockBehaviour.Properties.of().strength(20F).sound(SoundType.METAL).explosionResistance(20).noOcclusion());
         registerDefaultState((this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(TYPE, Type.MEDIC).setValue(LEVEL,CaseLevel.BASIC)));
     }
 
@@ -65,7 +67,7 @@ public class AirdropSupplyBlock extends HorizontalDirectionalBlock implements En
         } else {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
             if (blockentity instanceof AirdropSupplyBlockEntity) {
-                NetworkHooks.openGui((ServerPlayer) pPlayer,(AirdropSupplyBlockEntity)blockentity);
+                NetworkHooks.openScreen((ServerPlayer) pPlayer,(AirdropSupplyBlockEntity)blockentity);
             }
             return InteractionResult.CONSUME;
         }

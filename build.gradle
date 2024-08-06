@@ -15,7 +15,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: "2022.08.21-1.18.2"
+    mappings channel: 'parchment', version: "2023.09.03-1.20.1"
     runs {
         client {
             workingDirectory project.file('run')
@@ -76,7 +76,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
@@ -92,12 +92,12 @@ mixin {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "AirdropSupply",
-                "Specification-Vendor"    : "无梦之心",
+                "Specification-Title"     : "ReAirdropSupply",
+                "Specification-Vendor"    : "无梦之心, KL_jiana",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
+                "Implementation-Title"    : "AirdropSupply",
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "无梦之心",
+                "Implementation-Vendor"   : "无梦之心, KL_jiana",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 'MixinConfigs': 'airdrop_supply.mixins.json'
         ])

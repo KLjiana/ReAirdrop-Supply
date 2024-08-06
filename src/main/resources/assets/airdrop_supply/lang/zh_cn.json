@@ -12,5 +12,6 @@
   "item.airdrop_supply.airdrop_pager": "空投补给箱呼叫器",
   "item.airdrop_supply.airdrop_location_fixer": "空投位置固定装置",
   "item.airdrop_supply.airdrop_location_canceller": "空投位置取消装置",
-  "block.airdrop_supply.airdrop_supply": "空投补给箱"
+  "block.airdrop_supply.airdrop_supply": "空投补给箱",
+  "creativetab.airdrop_supply.airdrop_supply": "空投供应"
 }

@@ -8,12 +8,11 @@ import net.mcbbs.uid1525632.airdropsupply.misc.Configuration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -23,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 public class AirdropPagerItem extends Item {
 
     public AirdropPagerItem() {
-        super(new Item.Properties().tab(CreativeModeTab.TAB_MISC));
+        super(new Item.Properties());
     }
 
     @Override
@@ -33,10 +32,10 @@ public class AirdropPagerItem extends Item {
             return InteractionResultHolder.pass(player.getItemInHand(pUsedHand));
         if(!level.isClientSide()){
             if(level.dimension().equals(Level.OVERWORLD)){
-                var dropPos = new BlockPos(player.getX(), level.getMaxBuildHeight(), player.getZ());
+                var dropPos = new BlockPos((int) player.getX(), level.getMaxBuildHeight(), (int) player.getZ());
                 var result = level.getRandom().nextInt(Configuration.AMMO_AIRDROP_WEIGHT.get() + Configuration.MEDIC_AIRDROP_WEIGHT.get());
 
-                int day = (int) (player.level.getDayTime() / 24000) + 1;
+                int day = (int) (player.level().getDayTime() / 24000) + 1;
                 int nw = Configuration.BASIC_BASE_WEIGHT.get() + day *  Configuration.BASIC_MULTIPLE_WEIGHT.get();
                 int mw = Configuration.MEDIUM_BASE_WEIGHT.get() + day *  Configuration.MEDIUM_MULTIPLE_WEIGHT.get();
                 int aw = Configuration.ADVANCED_BASE_WEIGHT.get() + day *  Configuration.ADVANCED_MULTIPLE_WEIGHT.get();
@@ -71,13 +70,11 @@ public class AirdropPagerItem extends Item {
                 if(!player.isCreative()){
                     itemStack.shrink(1);
                 }
-                player.sendMessage(
-                        new TranslatableComponent("notification.airdrop_supply.airdrop_summoned",player.getScoreboardName()),
-                        player.getUUID());
+                player.sendSystemMessage(
+                        Component.translatable("notification.airdrop_supply.airdrop_summoned",player.getScoreboardName()));
             } else {
-                player.sendMessage(
-                        new TranslatableComponent("notification.airdrop_supply.airdrop_summoned_invalid_dimension",player.getScoreboardName()),
-                        player.getUUID());
+                player.sendSystemMessage(
+                        Component.translatable("notification.airdrop_supply.airdrop_summoned_invalid_dimension",player.getScoreboardName()));
             }
         }
         return InteractionResultHolder.sidedSuccess(itemStack,level.isClientSide());

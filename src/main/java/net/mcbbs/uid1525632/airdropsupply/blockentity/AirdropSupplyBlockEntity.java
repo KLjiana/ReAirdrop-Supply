@@ -1,6 +1,5 @@
 package net.mcbbs.uid1525632.airdropsupply.blockentity;
 
-import com.mojang.math.Vector3f;
 import net.mcbbs.uid1525632.airdropsupply.block.AirdropSupplyBlock;
 import net.mcbbs.uid1525632.airdropsupply.entry.ModBlockEntities;
 import net.mcbbs.uid1525632.airdropsupply.entry.ModSoundEvents;
@@ -11,7 +10,6 @@ import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -29,17 +27,18 @@ import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 
 import java.util.Objects;
 
 public class AirdropSupplyBlockEntity extends RandomizableContainerBlockEntity {
 
-    public static final DustColorTransitionOptions AIRDROP_SIGNAL = new DustColorTransitionOptions(new Vector3f(Vec3.fromRGB24(14761505)), DustParticleOptions.REDSTONE_PARTICLE_COLOR, 4.0F);
+    public static final DustColorTransitionOptions AIRDROP_SIGNAL = new DustColorTransitionOptions(new Vector3f(Vec3.fromRGB24(14761505).toVector3f()), DustParticleOptions.REDSTONE_PARTICLE_COLOR, 4.0F);
     private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
     private final LazyOptional<IItemHandler> handler = LazyOptional.of(() -> new InvWrapper(this));
     private long despawnTime = Long.MAX_VALUE;
@@ -126,7 +125,7 @@ public class AirdropSupplyBlockEntity extends RandomizableContainerBlockEntity {
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return new TranslatableComponent("container.airdrop_supply.airdrop_supply");
+        return Component.translatable("container.airdrop_supply.airdrop_supply");
     }
 
     @Override
@@ -174,7 +173,7 @@ public class AirdropSupplyBlockEntity extends RandomizableContainerBlockEntity {
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+        if(cap == ForgeCapabilities.ITEM_HANDLER){
             unpackLootTable(null);
             return handler.cast();
         }

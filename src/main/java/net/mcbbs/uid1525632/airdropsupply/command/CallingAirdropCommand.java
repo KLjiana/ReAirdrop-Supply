@@ -10,7 +10,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -18,7 +18,7 @@ import net.minecraftforge.server.command.EnumArgument;
 
 public class CallingAirdropCommand {
 
-    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(new TextComponent("Unable to create airdrop in this location."));
+    private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.literal("Unable to create airdrop in this location."));
 
     private static final EnumArgument<AirdropSupplyBlock.CaseLevel> CASE_LEVEL = EnumArgument.enumArgument(AirdropSupplyBlock.CaseLevel.class);
     private static final EnumArgument<AirdropSupplyBlock.Type> CASE_TYPE = EnumArgument.enumArgument(AirdropSupplyBlock.Type.class);

@@ -1,12 +1,14 @@
 {
   "required": true,
-  "compatibilityLevel": "JAVA_17",
-  "minVersion": "0.8.5",
+  "minVersion": "0.8",
   "package": "net.mcbbs.uid1525632.airdropsupply.mixin",
+  "compatibilityLevel": "JAVA_17",
   "refmap": "airdrop_supply.refmap.json",
   "mixins": [
     "FallingBlockEntityMixin"
   ],
   "client": [],
-  "server": []
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

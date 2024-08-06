@@ -1,7 +1,7 @@
 package net.mcbbs.uid1525632.airdropsupply.misc;
 
 import net.mcbbs.uid1525632.airdropsupply.capability.AirdropPlayerData;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,11 +19,11 @@ public class AirdropManager {
     }
 
     private static void tickPlayer(TickEvent.PlayerTickEvent event){
-        if(event.phase == TickEvent.Phase.START && !event.player.level.isClientSide()){
+        if(event.phase == TickEvent.Phase.START && !event.player.level().isClientSide()){
             var player = (ServerPlayer) event.player;
             var data = player.getCapability(AirdropPlayerData.CAPABILITY);
             data.ifPresent(cap->{
-                var overworld = player.level.getServer().overworld();
+                var overworld = player.level().getServer().overworld();
                 // Check despawn
                 var it = cap.airdropDespawnInfo.iterator();
                 while (it.hasNext()){
@@ -31,9 +31,7 @@ public class AirdropManager {
                     if(overworld.getGameTime()>=p.getFirst()){
                         // Send despawn message
                         var pos = p.getSecond();
-                        player.sendMessage(
-                                new TranslatableComponent("notification.airdrop_supply.airdrop_invalidate",pos.getX(),pos.getY(),pos.getZ(),player.getScoreboardName()),
-                                player.getUUID());
+                        player.sendSystemMessage(Component.translatable("notification.airdrop_supply.airdrop_invalidate",pos.getX(),pos.getY(),pos.getZ(),player.getScoreboardName()));
                         it.remove();
                     }
                 }

@@ -12,5 +12,6 @@
   "item.airdrop_supply.airdrop_pager": "Airdrop Pager",
   "item.airdrop_supply.airdrop_location_fixer": "Airdrop Location Fixer",
   "item.airdrop_supply.airdrop_location_canceller": "Airdrop Location Canceller",
-  "block.airdrop_supply.airdrop_supply": "Airdrop Supply Crate"
+  "block.airdrop_supply.airdrop_supply": "Airdrop Supply Crate",
+  "creativetab.airdrop_supply.airdrop_supply": "Airdrop Supply"
 }
