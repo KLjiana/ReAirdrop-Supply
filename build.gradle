@@ -72,11 +72,22 @@ sourceSets.main.resources {
 }
 
 repositories {
-
+    maven { url "https://maven.architectury.dev/" }
+    maven {
+        url "https://maven.saps.dev/releases"
+        content {
+            includeGroup "dev.ftb.mods"
+        }
+    }
+    maven {
+        url 'https://cursemaven.com'
+    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    implementation fg.deobf("curse.maven:xaeros-minimap-263420:5394772")
+    implementation fg.deobf("curse.maven:xaeros-world-map-317780:5394829")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

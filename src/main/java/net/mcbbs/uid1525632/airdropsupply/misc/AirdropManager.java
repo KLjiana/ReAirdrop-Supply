@@ -1,10 +1,16 @@
 package net.mcbbs.uid1525632.airdropsupply.misc;
 
 import net.mcbbs.uid1525632.airdropsupply.capability.AirdropPlayerData;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import xaero.common.XaeroMinimapSession;
+import xaero.common.core.IXaeroMinimapClientPlayNetHandler;
+import xaero.common.minimap.waypoints.Waypoint;
+import xaero.common.minimap.waypoints.WaypointsManager;
+import xaero.common.settings.ModSettings;
 
 import java.util.LinkedList;
 import java.util.Queue;

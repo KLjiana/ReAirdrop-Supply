@@ -5,6 +5,7 @@ import net.mcbbs.uid1525632.airdropsupply.AirdropSupply;
 import net.mcbbs.uid1525632.airdropsupply.block.AirdropSupplyBlock;
 import net.mcbbs.uid1525632.airdropsupply.capability.AirdropPlayerData;
 import net.mcbbs.uid1525632.airdropsupply.entry.ModBlocks;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -14,6 +15,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import xaero.common.XaeroMinimapSession;
+import xaero.common.core.IXaeroMinimapClientPlayNetHandler;
+import xaero.common.minimap.waypoints.Waypoint;
+import xaero.common.minimap.waypoints.WaypointsManager;
+import xaero.common.settings.ModSettings;
 
 import java.lang.ref.WeakReference;
 
@@ -111,9 +117,17 @@ public class AirdropMission {
         overworld.setBlockAndUpdate(dropPos, ModBlocks.AIRDROP_SUPPLY.get().defaultBlockState()
                 .setValue(AirdropSupplyBlock.TYPE, type)
                 .setValue(HorizontalDirectionalBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(player.getRandom())));
+
         RandomizableContainerBlockEntity.setLootTable(overworld, player.getRandom(), dropPos, AirdropSupply.LootTables.calculateLootTable(type,caseLevel));
         AirdropSupplyBlock.setDespawnTime(overworld,dropPos);
         player.sendSystemMessage(Component.translatable("notification.airdrop_supply.airdrop_arrive",dropPos.getX(),dropPos.getY(),dropPos.getZ(),player.getScoreboardName()));
+
+        IXaeroMinimapClientPlayNetHandler clientLevel = (IXaeroMinimapClientPlayNetHandler) (Minecraft.getInstance().player.connection);
+        XaeroMinimapSession session = clientLevel.getXaero_minimapSession();
+        WaypointsManager waypointsManager = session.getWaypointsManager();
+        Waypoint instant = new Waypoint(dropPos.getX(), dropPos.getY(), dropPos.getZ(), "airdrop", "airdrop".substring(0, 1), (int)(Math.random() * ModSettings.ENCHANT_COLORS.length), 0, false);
+        waypointsManager.getWaypoints().getList().add(instant);
+
         data.airdropDespawnInfo.add(Pair.of(overworld.getGameTime()+Configuration.AIRDROP_DESPAWN_TIME.get(),dropPos));
     }
 }

@@ -23,9 +23,7 @@ public class CallingAirdropCommand {
     private static final EnumArgument<AirdropSupplyBlock.CaseLevel> CASE_LEVEL = EnumArgument.enumArgument(AirdropSupplyBlock.CaseLevel.class);
     private static final EnumArgument<AirdropSupplyBlock.Type> CASE_TYPE = EnumArgument.enumArgument(AirdropSupplyBlock.Type.class);
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher){
-        dispatcher.register(Commands.literal("airdrop").requires((sourceStack) -> {
-            return sourceStack.hasPermission(2);
-        }).then(Commands.argument("pos", BlockPosArgument.blockPos())
+        dispatcher.register(Commands.literal("airdrop").requires((sourceStack) -> sourceStack.hasPermission(2)).then(Commands.argument("pos", BlockPosArgument.blockPos())
                 .then(Commands.argument("level", CASE_LEVEL)
                         .then(Commands.argument("type", CASE_TYPE)
                         .executes((sourceStack2) -> {
