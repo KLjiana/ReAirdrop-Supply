@@ -5,10 +5,13 @@ import net.mcbbs.uid1525632.airdropsupply.block.AirdropSupplyBlock;
 import net.mcbbs.uid1525632.airdropsupply.entry.ModBlocks;
 import net.mcbbs.uid1525632.airdropsupply.entry.ModItems;
 import net.mcbbs.uid1525632.airdropsupply.misc.Configuration;
+import net.mcbbs.uid1525632.airdropsupply.network.NetworkHandler;
+import net.mcbbs.uid1525632.airdropsupply.network.s2c.MapPointPacketS2C;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.item.FallingBlockEntity;
@@ -17,6 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 public class AirdropPagerItem extends Item {
@@ -72,6 +76,7 @@ public class AirdropPagerItem extends Item {
                 }
                 player.sendSystemMessage(
                         Component.translatable("notification.airdrop_supply.airdrop_summoned",player.getScoreboardName()));
+                NetworkHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player), MapPointPacketS2C.sentPos(dropPos));
             } else {
                 player.sendSystemMessage(
                         Component.translatable("notification.airdrop_supply.airdrop_summoned_invalid_dimension",player.getScoreboardName()));

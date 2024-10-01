@@ -8,6 +8,7 @@ import net.mcbbs.uid1525632.airdropsupply.entry.*;
 import net.mcbbs.uid1525632.airdropsupply.item.MobTabs;
 import net.mcbbs.uid1525632.airdropsupply.misc.AirdropManager;
 import net.mcbbs.uid1525632.airdropsupply.misc.Configuration;
+import net.mcbbs.uid1525632.airdropsupply.network.NetworkHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -22,12 +23,14 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Mod(AirdropSupply.MOD_ID)
 public class AirdropSupply
 {
     public static final String MOD_ID = "airdrop_supply";
-
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public AirdropSupply()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -39,6 +42,7 @@ public class AirdropSupply
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModSoundEvents.SOUNDS.register(modEventBus);
+        NetworkHandler.register();
 
         modEventBus.addListener(AirdropSupply::registerCapability);
 

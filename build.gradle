@@ -6,7 +6,7 @@ plugins {
     id 'maven-publish'
 }
 
-version = '1.1.1'
+version = '1.2'
 group = 'net.mcbbs.1525632.airdropsupply' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'airdrop_supply'
 
@@ -86,8 +86,8 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
-    implementation fg.deobf("curse.maven:xaeros-minimap-263420:5394772")
-    implementation fg.deobf("curse.maven:xaeros-world-map-317780:5394829")
+    compileOnly fg.deobf("curse.maven:xaeros-minimap-263420:5394772")
+    compileOnly fg.deobf("curse.maven:xaeros-world-map-317780:5394829")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

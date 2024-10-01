@@ -9,6 +9,8 @@
   "notification.airdrop_supply.airdrop_location_set_invalid_dimension": "%1$s tries to set airdrop location in invalid dimension.",
   "notification.airdrop_supply.airdrop_location_unset": "%1$s has canceled fixed airdrop location.",
   "notification.airdrop_supply.airdrop_location_unset_invalid_dimension": "Cannot cancel fixed airdrop location in this dimension.",
+  "notification.airdrop_supply.map_point": "Locations that have been airdropped are marked on the minimap",
+
   "item.airdrop_supply.airdrop_pager": "Airdrop Pager",
   "item.airdrop_supply.airdrop_location_fixer": "Airdrop Location Fixer",
   "item.airdrop_supply.airdrop_location_canceller": "Airdrop Location Canceller",

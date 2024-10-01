@@ -34,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class AirdropSupplyBlock extends HorizontalDirectionalBlock implements EntityBlock {
 
-    // TODO Collision Shape
+// TODO Collision Shape
     private static final VoxelShape COLLISION_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
     public static final EnumProperty<Type> TYPE = EnumProperty.create("type",Type.class);
     public static final EnumProperty<CaseLevel> LEVEL = EnumProperty.create("level",CaseLevel.class);
@@ -84,7 +84,6 @@ public class AirdropSupplyBlock extends HorizontalDirectionalBlock implements En
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
         }
     }
-    // TODO
     @Override
     public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return COLLISION_SHAPE;

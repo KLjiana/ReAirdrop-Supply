@@ -9,6 +9,8 @@
   "notification.airdrop_supply.airdrop_location_set_invalid_dimension": "%1$s 尝试在无法投递空投的维度设定固定空投位置。",
   "notification.airdrop_supply.airdrop_location_unset": "%1$s 取消了固定空投位置。",
   "notification.airdrop_supply.airdrop_location_unset_invalid_dimension": "无法在该维度取消固定空投位置。",
+  "notification.airdrop_supply.map_point": "已经空投的位置标记在小地图上。",
+
   "item.airdrop_supply.airdrop_pager": "空投补给箱呼叫器",
   "item.airdrop_supply.airdrop_location_fixer": "空投位置固定装置",
   "item.airdrop_supply.airdrop_location_canceller": "空投位置取消装置",
